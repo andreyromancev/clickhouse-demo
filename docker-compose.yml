@@ -1,0 +1,20 @@
+version: '2'
+services:
+  ch-db:
+    image: yandex/clickhouse-server
+    ulimits:
+      nofile: 262144
+    volumes:
+      - ./config/ch-conf.xml:/etc/clickhouse-server/config.d/local.xml
+      - ./.data/ch/data/:/var/lib/clickhouse/
+      - ./.data/ch/server/:/var/log/clickhouse-server/
+      - ./.data/shared/:/var/shared/
+
+  app:
+    build: ./app
+    volumes:
+      - ./.data/shared/:/var/shared/
+    depends_on:
+      - ch-db
+    environment:
+      DB_CLICKHOUSE_HOST: ch-db

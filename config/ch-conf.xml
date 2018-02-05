@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<yandex>
+    <path>/var/lib/clickhouse/</path>
+    <tmp_path>/var/lib/clickhouse/tmp/</tmp_path>
+    <max_threads>4</max_threads>
+</yandex>
