@@ -1,3 +1,5 @@
+import os
+
 import config
 
 from clickhouse_driver import Client
